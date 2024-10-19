@@ -121,6 +121,7 @@ class HomePageState extends State<HomePage> {
                     openCheckout(
                         _amountController.text); // Pass the entered amount
                   } else {
+                      Navigator.pop(context);
                     Fluttertoast.showToast(
                         msg: "Please enter a valid amount",
                         toastLength: Toast.LENGTH_SHORT);
@@ -210,9 +211,12 @@ class HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: transferMoneyActions.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return MainAction(
-                        icon: transferMoneyActions[index]["icon"],
-                        label: transferMoneyActions[index]["label"]);
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: MainAction(
+                          icon: transferMoneyActions[index]["icon"],
+                          label: transferMoneyActions[index]["label"]),
+                    );
                   },
                 ),
               ),
